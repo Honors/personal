@@ -1,0 +1,10 @@
+[{
+	"title": "An Interpreter of λ-Calculus",
+	"link": "interpret.md"
+}, {
+	"title": "On Functional Languages",
+	"link": "functional.md"
+}, {
+	"title": "A Proxy-as-a-Service",
+	"link": "proxy.md"
+}]
