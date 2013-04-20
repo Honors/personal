@@ -12,6 +12,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
 		
 		<script src="scripts/knockout-2.2.1.js"></script>
+		<script src="scripts/ko-model.js"></script>
 		<script src="scripts/showdown.js"></script>
 		<script src="scripts/prism.js"></script>
 	</head>
@@ -20,63 +21,42 @@
 			<h1>Matthew Neary</h1>
 		</div>
 		
-		<select data-bind="options: Posts.all(), optionsText: function(item) {return item.title}, event: { click: Posts.fetch.bind(Posts) }"></select>
+		<select data-bind="options: Posts.all(), optionsText: function(item) {return item.title}, event: { click: Posts.click.bind(Posts) }"></select>
 		<ul id="posts" data-bind="foreach: Posts.all()">
-			<li><a data-bind="text: title, event: { click: Posts.fetch.bind(Posts) }"></a></li>
+			<li><a data-bind="text: title, event: { click: Posts.click.bind(Posts) }"></a></li>
 		</ul>
 		
 		<div id="content" data-bind="html: Posts.current()"></div>				
 		<script>
+			// syntax highlighting for obscure languages
 			Prism.languages.lambda = {
 				'operator': /-&gt;|=/g,
 				'punctuation': /[\)\(]/g,
 				'keyword': /\u03BB/g
-			};
-			
+			};			
 			Prism.languages.types = {
 				'operator': /::=|\||:|-&gt;/g,
 				'punctuation': /[,.]/g,
 				'keyword': /&lt;[^&]+&gt;/g
-			};
-		
-			var converter = new Showdown.converter();
-			var Posts = (new function() {
-				var cache = {};
+			};						
 			
-				this.current = ko.observable('');
-				this.all = ko.observableArray();
-				this.link = ko.observable();
-				this.render = ko.dependentObservable(function() {
-					if( !this.all().length ) return;
-					
-					var link = this.link() || (location.hash ? location.hash.substr(3) : this.all()[0].link);
-					location.hash = '#!/'+link;
-					if( cache[link] ) {
-						Posts.current(converter.makeHtml(cache[link]));
-					} else {
-						$.get('/api/post/'+link, function(data) {
-							Posts.current(converter.makeHtml(data));
-							cache[link] = data;
-						});
-					}
-				}.bind(this));
-				this.style = ko.dependentObservable(function() {
-					this.current();
-					setTimeout(function() { Prism.highlightAll() }, 100);
-				}.bind(this));
-				this.fetch = function(post, evt) {
-					if( typeof post.link == 'function' ) {
-						this.link(this.all()[evt.target.selectedIndex].link);
-					} else {
-						this.link(post.link);
-					}
-				};
-			}());
-		
-			$.get('/api/posts/', function(data) {
-				Posts.all(data);
-			});												
-		
+			var converter = new Showdown.converter();
+			var Posts = new Model('post', {
+				content: converter.makeHtml.bind(converter),
+				link: function(link) {
+					// provide default value for article link
+					return this.link() || (location.hash ? location.hash.substr(3) : (this.all().length ? this.all()[0].link : ''));
+				},
+				click: function(item, evt) {				
+					// change article upon link click	
+					return evt.target.selectedIndex ? (this.all().length ? this.all()[evt.target.selectedIndex].link : '') : item.link;
+				},
+				hash: function() {
+					// listen for link changes and reflect in hash
+					setTimeout(Prism.highlightAll.bind(Prism), 100);
+					location.hash = '#!/'+this.link();
+				}
+			});
 			ko.applyBindings(Posts);
 		</script>
 	</body>
