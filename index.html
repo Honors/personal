@@ -53,7 +53,7 @@
 				},
 				hash: function() {
 					// listen for link changes and reflect in hash
-					setTimeout(Prism.highlightAll.bind(Prism), 100);
+					setTimeout(Prism.highlightAll.bind(Prism), 200);
 					location.hash = '#!/'+this.link();
 				}
 			});
