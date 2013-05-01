@@ -1,5 +1,5 @@
-Introduction
-============
+Enhancing Lambda Calculus from Within
+=====================================
 Lambda Calculus is a very bare-bones language, and at first site it seems full-fledged programs would be impossible in such a syntactically restrictive language. However, as I wish to make clear, with certain design decisions, made from within the language, we can make a more welcoming environment for development.
 
 Recursion
