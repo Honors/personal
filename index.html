@@ -45,7 +45,7 @@
 				content: converter.makeHtml.bind(converter),
 				link: function(link) {
 					// provide default value for article link
-					return this.link() || (location.hash ? location.hash.substr(3) : (this.all().length ? this.all()[0].link : ''));
+					return this.link() || (location.hash ? location.hash.substr(3) : (this.all().length ? this.all()[0].link : 'from_within.md'));
 				},
 				click: function(item, evt) {				
 					// change article upon link click	
@@ -54,7 +54,9 @@
 				hash: function() {
 					// listen for link changes and reflect in hash
 					setTimeout(Prism.highlightAll.bind(Prism), 200);
-					location.hash = '#!/'+this.link();
+					if( this.link() ) {
+						location.hash = '#!/'+this.link();
+					}
 				}
 			});
 			ko.applyBindings(Posts);

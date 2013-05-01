@@ -29,8 +29,12 @@ app.get({
 		var parts = req.url.substr(1).split('/'),
 			post = parts[2];
 		res.writeHead(200, { 'Content-Type': 'text/plain' });
-		fs.createReadStream(__dirname + '/posts/' + post).pipe(res);
+		if( post ) {
+			fs.createReadStream(__dirname + '/posts/' + post).pipe(res);
+		} else {
+			res.end("fail");
+		}
 	}
 })
 
-exports.module = http.createServer(app);
+exports.module = http.createServer(app).listen(8080);

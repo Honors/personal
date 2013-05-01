@@ -2,12 +2,9 @@
 	"title": "An Interpreter of λ-Calculus",
 	"link": "interpret.md"
 }, {
-	"title": "On Functional Languages",
-	"link": "functional.md"
-}, {
 	"title": "A Proxy-as-a-Service",
 	"link": "proxy.md"
 }, {
-	"title": "Jay-Z on Incumbent Authority",
-	"link": "jayz.md"
+	"title": "Enhancing λ-Calculus from Within",
+	"link": "from_within.md"
 }]
