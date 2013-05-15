@@ -57,12 +57,13 @@
 					return this.link() || (location.hash ? location.hash.substr(3) : (this.all().length ? this.all()[0].link : 'from_within.md'));
 				},
 				click: function(item, evt) {				
-					// change article upon link click	
+					// change article upon link click						
 					return evt.target.selectedIndex ? (this.all().length ? this.all()[evt.target.selectedIndex].link : '') : item.link;
 				},
 				hash: function() {
 					// listen for link changes and reflect in hash
 					setTimeout(Prism.highlightAll.bind(Prism), 200);
+					setTimeout(function(){MathJax.Hub.Queue(["Typeset",MathJax.Hub])}, 200);
 					if( this.link() ) {
 						location.hash = '#!/'+this.link();
 					}
