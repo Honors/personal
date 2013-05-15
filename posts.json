@@ -7,4 +7,7 @@
 }, {
 	"title": "Enhancing λ-Calculus from Within",
 	"link": "from_within.md"
+}, {
+	"title": "Proving a Rudimentary Fact",
+	"link": "2plus2.md"
 }]
