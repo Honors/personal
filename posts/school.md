@@ -1,0 +1,18 @@
+On Intrapreneurship in Schools
+==============================
+
+Introduction
+------------
+I believe the foundations of education in memorization and formal test-taking are antiquated, and that schools should instead reward intrapreneurship and creativity. Motivated by this vision, I have ventured to create new data interfaces for students, a communal sandbox to promote real world application of studied topics, and tools that handle the ennui of math and science.
+
+New Interfaces with Data
+------------------------
+Before school began for my junior year, students were given their course schedules. Naturally, they began to compare schedules to develop an idea of those with whom they shared classes. Drawing from the pool of schedules and simply grouping enrollments, I developed a website that could display one's classmates, in their entirety. Such data could prove very valuable, in developing an idea of collaboration opportunities, for example. If similar tactics were taken with the additional data held by the administration, including grades, demographics, and schedules, we could begin to have very intelligent, data-based counseling.
+
+Community Sandbox
+-----------------
+As prom season approached, I received a suggestion for a website. The general idea was to have a dress sharing website to which prom attendees could post and on which they could compare dresses, the goal being to achieve uniqueness. I built the website quickly, and discussed with the administration the use of brainhoney logins for the sake of maintaining a closed community on the website. The principal was particularly struck by the potential for data collection, sharing a common vision with me. So I threw together some data visualizations drawing from the site, a rendering of the social graph and of style tendencies. Similar to the roster website was the idea that additional data from the administration could really bring this to life. For example, I could combine demographic data with the social graph or school initiatives with the communal preference analysis.
+
+Avoidance of Trivialities
+-------------------------
+My freshman year, Mr. Tuohy noted as we learned chemical equation balancing, "The process is trial-and-error, there is no way around it". Already conceptualizing an algorithm, when I heard him say, "I once had a student try to develop an algorithm, but he eventually reached a step that required that you 'try' values", I accepted his prescription as a challenge. The prior year I had learned from an Algebra II book the ability of matrices to solve systems of equations, and so from there, implementation of an algorithm was trivial. The following day I presented to the class my findings, including a means of inverting matrices on which I had settled. Of course as a programmer, an algorithm was, to me, only such once it had been written in code. Over the weekend I implemented the solver in PHP and published it to *equations.mneary.info*, sadly this page has long since been taken down. When working on this technology, I took it as a given that I would be unable to use my findings on tests. In fact, we were limited to 10-key calculators for our tests. Retroactively however, it strikes me that there is no room for intrapreneurship in the school system. Imagine an education system in which problems you face remain despite any technology- or reference-based aids, in a sense, a school that solves real problems. I believe such a system would be possible, and we can begin to make steps in this direction today. 
