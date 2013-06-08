@@ -1,5 +1,5 @@
-Introduction
-============
+An Interpreter of λ-Calculus
+============================
 Implementing an interpreter can seem a very daunting task for beginners. For a long time I felt there was a part of the process I failed to understand. However, having finally jumped in, the process seems rather straight-forward, parse then evaluate.
 
 Parsing

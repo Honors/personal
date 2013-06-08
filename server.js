@@ -13,7 +13,15 @@ app.get({
 	path: /^/,
 	cb: function(req, res) {
 		res.writeHead(200, { 'Content-Type': 'text/html' });
-		fs.createReadStream(__dirname + (req.url=='/'?'/index.html':req.url)).pipe(res);
+		var path = __dirname + (req.url=='/'?'/index.html':req.url);
+		fs.stat(path, function(err, stat) {
+		    if (!err) {
+				fs.createReadStream(path).pipe(res);
+		    }else {
+		        res.writeHead(404);
+		        res.end();
+		    }
+		});		
 	}
 }, {
 	path: /^\/api\/posts\//,
@@ -37,4 +45,4 @@ app.get({
 	}
 })
 
-exports.module = http.createServer(app);
+exports.module = http.createServer(app).listen(8080);
