@@ -25,25 +25,25 @@ cons = (a, b) ->
 		else b
 ```
 
-You see that in `cons`, our pair constructor, the default and alternate values are passed as parameters, `a` and `b`. Additionally, the criterion that the day must equal 1 has been generalized. Rather, the passed value must be true. However, the structure remains the same. Putting this to use we have evaluation of the following expressions as displayed by the `// =>` annotations.
+You see that in `cons`, our pair constructor, the default and alternate values are passed as parameters, `a` and `b`. Additionally, the criterion that the day must equal 1 has been generalized. Rather, the passed value must be true. However, the structure remains the same. Putting this to use we have evaluation of the following expressions as displayed by the `# =>` annotations.
 
 ```language-coffeescript
 whatDay = cons("It's Friday!", "It's not Friday!")
-whatDay(true) // => "It's Friday!"
-whatDay(false) // => "It's not Friday!"
+whatDay(true) # => "It's Friday!"
+whatDay(false) # => "It's not Friday!"
 ```
 
-We have successfully generalized the idea of branching based on input, so let's try to expand to allow for arbitrarily many options. You should note that henceforth cons will often be used in constructing nested pairs, our implementation of lists. Our nested pairs will be constructed as in the following code, where comments have been added of the form `// ...` to make clear the reason for branching, analogous to our Friday-based branch shown previously.
+We have successfully generalized the idea of branching based on input, so let's try to expand to allow for arbitrarily many options. You should note that henceforth cons will often be used in constructing nested pairs, our implementation of lists. Our nested pairs will be constructed as in the following code, where comments have been added of the form `# ...` to make clear the reason for branching, analogous to our Friday-based branch shown previously.
 
 ```language-coffeescript
 whatAmI = cons(
-	// Do you lack arms?
+	# Do you lack arms?
 	"snake",
 	cons(
-		// Are you fast?
+		# Are you fast?
 		"leopard",
 		cons(
-			// Are you slow?
+			# Are you slow?
 			"sloth",
 			nil
 		)
@@ -51,7 +51,7 @@ whatAmI = cons(
 )
 ```
 
-The above serves as a tree of decisions, or given the taxonomical example, a [dichotomous key](http://en.wikipedia.org/wiki/Single-access_key). If a criterion is matched, a value is determined, and if not, additional criteria must be assessed. Eventually, additional branching will be impossible, so we write `nil` instead of a set of branches.
+The above serves as a tree of decisions, or given the taxonomical example, a [dichotomous key](http:#en.wikipedia.org/wiki/Single-access_key). If a criterion is matched, a value is determined, and if not, additional criteria must be assessed. Eventually, additional branching will be impossible, so we write `nil` instead of a set of branches.
 
 This nesting of pairs serves as our implementation of lists. Lists consist of a "head" value and a "tail" value, with the tail being another list. To signal the end of a list's nesting we make the tail empty, with a value we will call `nil`. By now you should have a firm grasp on the structure we have chosen for lists, as displayed by the following.
 
@@ -81,8 +81,10 @@ car = (x) -> x(true)
 cdr = (x) -> x(false)
 ```
 
-Recursive Pair Functions
-------------------------
+All code written in this article is present in the file viewable [here](https://gist.github.com/mattneary/5737278). You can follow along or execute the code in this file.
+
+Functions on Recursive Pairs
+----------------------------
 Our chosen structure for lists is intentionally self-similar. Thus the best way of manipulating the lists is with recursive functions. A recursive function invokes itself. For example, a factorial function of 5 multiples 5 by the factorial of 4, that is, 5 by 4 by the factorial of 3, ..., that is 5 by 4 by 3 by 2 by 1. Our functions will have a similar structure. Let's begin with an example.
 
 - `ff(x)` - The first atomic value of a list, ignoring nesting.
@@ -119,7 +121,7 @@ ff(cons(cons(a, b), c))
 	= a
 ```
 
-- `subst(a, b, x)` - The result of substituting `a` for `b` throughout a list `x`.
+- `subst(a, b, x)` - The result of substituting `a` for `b` throughout nested pairs `x`.
 
 ```language-coffeescript
 subst = (a, b, x) -> switch
@@ -183,7 +185,8 @@ As an example, `append(_(a,b), _(c,d,e))` = `_(a,b,c,d,e)`.
 - `among(x,y)` - returns `true` if the expression `x` occurs as a member of the list `y`.
 
 ```language-coffeescript
-among = (x,y) -> not isNil(y) and (equal(x, car(y)) or among(x, cdr(y)))
+among = (x,y) -> not isNil(y) and (equal(x, car(y)) 
+				 or among(x, cdr(y)))
 ```
 
 - `pair(x,y)` - pairs up corresponding items of two lists
@@ -192,7 +195,8 @@ among = (x,y) -> not isNil(y) and (equal(x, car(y)) or among(x, cdr(y)))
 pair = (x,y) -> switch
 	when isNil(x) and isNil(y) then nil
 	when not atom(x) and not atom(y) then 
-		 cons(cons(car(x), cons(car(y), nil)), pair(cdr(x), cdr(y)))
+		 cons(cons(car(x), cons(car(y), nil)), 
+		 	  pair(cdr(x), cdr(y)))
 	else nil
 ```
 
@@ -223,6 +227,6 @@ sublis = (x, y) -> switch
 
 Interpretation of Programming Languages
 ---------------------------------------
-We have successfully amassed a library of useful functions on our lists. This library directly corresponds with that built-up in [John McCarthy](http://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist))'s paper, [Recursive Functions of Symbolic Expressions and Their Computation by Machine](http://www-formal.stanford.edu/jmc/recursive.pdf). At this point he goes on to discuss the interpretation and implementation of the language on which his paper was written. We, however, will not discuss an interpreter of CoffeeScript.
+We have successfully amassed a library of useful functions on our lists. This library directly corresponds with that built-up in [John McCarthy](http:#en.wikipedia.org/wiki/John_McCarthy_(computer_scientist))'s paper, [Recursive Functions of Symbolic Expressions and Their Computation by Machine](http:#www-formal.stanford.edu/jmc/recursive.pdf). At this point he goes on to discuss the interpretation and implementation of the language on which his paper was written. We, however, will not discuss an interpreter of CoffeeScript.
 
-At this point I would suggest you either jump right into McCarthy's [paper](http://www-formal.stanford.edu/jmc/recursive.pdf), or become familiar with interpretation through an article written in JavaScript, the language on which CoffeeScript is based, right [here](http://mattneary.com/#!/interpret.md). I plan on writing an article tracing the second portion of McCarthy's paper eventually.
+At this point I would suggest you either jump right into McCarthy's [paper](http:#www-formal.stanford.edu/jmc/recursive.pdf), or become familiar with interpretation through an article written in JavaScript, the language on which CoffeeScript is based, right [here](http:#mattneary.com/#!/interpret.md). I plan on writing an article tracing the second portion of McCarthy's paper eventually.
