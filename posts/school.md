@@ -1,9 +1,9 @@
-On Intrapreneurship in Schools
-==============================
+An Innovator's Schooling
+========================
 
 Introduction
 ------------
-I believe the foundations of education in memorization and formal test-taking are antiquated, and that schools should instead reward intrapreneurship and creativity. Motivated by this vision, I have ventured to create new data interfaces for students, a communal sandbox to promote real world application of studied topics, and tools that handle the ennui of math and science.
+While I have been in school I have often felt memorization was overly emphasized, and that schools should instead reward intrapreneurship and creativity. I myself have ventured to create new data interfaces for students, a communal sandbox to promote real world application of studied topics, and tools that handle the ennui of math and science in hopes of furthering this vision.
 
 New Interfaces with Data
 ------------------------

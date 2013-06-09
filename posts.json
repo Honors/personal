@@ -11,6 +11,9 @@
 	"title": "Proving a Rudimentary Fact",
 	"link": "2plus2.md"
 }, {
-	"title": "On Intrapreneurship in Schools",
+	"title": "An Innovator's Schooling",
 	"link": "school.md"
+}, {
+	"title": "A Primer on the Structure and Interpretation of Programs",
+	"link": "lispycoffee.md"
 }]
