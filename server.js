@@ -38,11 +38,19 @@ app.get({
 			post = parts[2];
 		res.writeHead(200, { 'Content-Type': 'text/plain' });
 		if( post ) {
-			fs.createReadStream(__dirname + '/posts/' + post).pipe(res);
+			var path = __dirname + '/posts/' + post;
+			fs.stat(path, function(err, stat) {
+			    if (!err) {
+					fs.createReadStream(path).pipe(res);
+			    }else {
+			        res.writeHead(404);
+			        res.end();
+			    }
+			});
 		} else {
 			res.end("fail");
 		}
 	}
 })
 
-exports.module = http.createServer(app);
+exports.module = http.createServer(app).listen(8080);

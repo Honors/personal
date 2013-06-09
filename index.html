@@ -58,7 +58,7 @@
 			<h1>MN</h1>
 		</div>
 		
-		<select data-bind="options: Posts.all(), optionsText: function(item) {return item.title}, event: { click: Posts.click.bind(Posts) }"></select>
+		<select data-bind="options: Posts.all(), optionsText: function(item) {return item.title}, event: { change: Posts.click.bind(Posts) }"></select>
 		<ul id="posts" data-bind="foreach: Posts.all()">
 			<li><a data-bind="text: title, event: { click: Posts.click.bind(Posts) }"></a></li>
 		</ul>
@@ -110,7 +110,9 @@
 					// listen for link changes and reflect in hash
 					setTimeout(Prism.highlightAll.bind(Prism), 2e3);
 					setTimeout(function(){MathJax.Hub.Queue(["Typeset",MathJax.Hub])}, 200);
-					if( this.link() ) {
+					if( this.link().match(/^http/) ) {
+						location.href = this.link();
+					} else if( this.link() ) {
 						location.hash = '#!/'+this.link();
 					}
 				}
