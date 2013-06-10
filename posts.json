@@ -16,4 +16,7 @@
 }, {
 	"title": "A Primer on the Structure and Interpretation of Programs",
 	"link": "lispycoffee.md"
+}, {
+	"title": "Bootstrapping Lambda Calculus",
+	"link": "bootstrap.md"
 }]
