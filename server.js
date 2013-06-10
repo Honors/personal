@@ -42,7 +42,7 @@ app.get({
 			fs.stat(path, function(err, stat) {
 			    if (!err) {
 					fs.createReadStream(path).pipe(res);
-			    }else {
+			    } else {
 			        res.writeHead(404);
 			        res.end();
 			    }

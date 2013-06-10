@@ -97,18 +97,29 @@
 			
 			var converter = new Showdown.converter();
 			var Posts = new Model('post', {
-				content: converter.makeHtml.bind(converter),
+				content: function(x) { 
+					console.log("x", x);
+					return converter.makeHtml(x) + '<a href="http://news.ycombinator.com/submit" class="hn-share-button">Vote on HN</a>';
+				},
 				link: function(link) {
 					// provide default value for article link
 					return this.link() || (location.hash ? location.hash.substr(3) : (this.all().length ? this.all()[0].link : 'from_within.md'));
 				},
-				click: function(item, evt) {				
+				click: function(item, evt) {									
 					// change article upon link click						
 					return typeof evt.target.selectedIndex != 'undefined' ? (this.all().length ? this.all()[evt.target.selectedIndex].link : '') : item.link;
 				},
 				hash: function() {
 					// listen for link changes and reflect in hash
-					setTimeout(Prism.highlightAll.bind(Prism), 2e3);
+					setTimeout(function() {
+						Prism.highlightAll();
+						(function(d, t) {
+						        var g = d.createElement(t),
+						            s = d.getElementsByTagName(t)[0];
+						        g.src = '//hnbutton.appspot.com/static/hn.min.js';
+						        s.parentNode.insertBefore(g, s);
+						    }(document, 'script'))
+					}, 2e3);
 					setTimeout(function(){MathJax.Hub.Queue(["Typeset",MathJax.Hub])}, 200);
 					if( this.link().match(/^http/) ) {
 						location.href = this.link();
