@@ -1,6 +1,6 @@
 Enhancing Lambda Calculus from Within
 =====================================
-Lambda Calculus is a very bare-bones language, and at first site it seems full-fledged programs would be impossible in such a syntactically restrictive language. However, as I wish to make clear, with certain design decisions, made from within the language, we can make a more welcoming environment for development. For a more focused path toward bootstrapping lambda calculus, see my post [here](http://mattneary.com/#!/bootstrap.md). If, however, you are interested in my initial excursions in the language, I encourage you to finish the current article.
+Lambda Calculus is a very bare-bones language, and at first site it seems full-fledged programs would be impossible in such a syntactically restrictive language. However, as I wish to make clear, with certain design decisions, made from within the language, we can make a more welcoming environment for development. See my other post for a more focused path toward [bootstrapping lambda calculus](http://mattneary.com/#!/bootstrap.md). If, however, you are interested in my initial excursions in the language, I encourage you to finish the current article.
 
 Recursion
 ---------

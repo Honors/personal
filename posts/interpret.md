@@ -195,4 +195,4 @@ module.exports = function(file, cb) {
 };
 ```
 
-Hopefully the implementation of this language's interpreter has made clear the process of interpretation, especially its recursive nature. You can see the full project on [Github](https://github.com/mattneary/Lambda-Calculus-Interpreter). If you are interested in writing full-fledged programs in lambda calculus, read either my article first attempting to make some friendly constructs in pure lambda calculus [here](http://mattneary.com/#!/from_within.md), or the article in which I bootstrap lambda calculus [here](http://mattneary.com/#!/bootstrap.md).
+Hopefully the implementation of this language's interpreter has made clear the process of interpretation, especially its recursive nature. You can see the full project on [Github](https://github.com/mattneary/Lambda-Calculus-Interpreter). If you are interested in writing full-fledged programs in lambda calculus, read either my article [attempting to make some friendly constructs]((http://mattneary.com/#!/from_within.md)) in pure lambda calculus, or another in which I [bootstrap lambda calculus](http://mattneary.com/#!/bootstrap.md).
