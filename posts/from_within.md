@@ -1,9 +1,9 @@
 Enhancing Lambda Calculus from Within
 =====================================
-Lambda Calculus is a very bare-bones language, and at first site it seems full-fledged programs would be impossible in such a syntactically restrictive language. However, as I wish to make clear, with certain design decisions, made from within the language, we can make a more welcoming environment for development.
+Lambda Calculus is a very bare-bones language, and at first site it seems full-fledged programs would be impossible in such a syntactically restrictive language. However, as I wish to make clear, with certain design decisions, made from within the language, we can make a more welcoming environment for development. For a more focused path toward bootstrapping lambda calculus, see my post [here](http://mattneary.com/#!/bootstrap.md). If, however, you are interested in my initial excursions in the language, I encourage you to finish the current article.
 
 Recursion
-=========
+---------
 *NOTE: the following functions would be unnecessary if the interpreter had built-in lazy evaluation.*
 
 As one would expect from a functional language, recursion plays a huge role in the implementation of algorithms in the Lambda Calculus. To aid in recursion, we will construct two functions to control evaluation of expressions, preventing infinitely recursive definitions.
@@ -19,11 +19,11 @@ FACT = λn->, ((ISZERO n) (` ONE) (` MULT n (FACT (PRED n))))
 ```
 
 Output
-======
+------
 Functions for outputting values to the outside-world are provided, namely, `NUM`, `BOOL`, `CHAR`, and `LIST`. Their respective uses are self-evident. Future examples will include outputted values beneath certain expressions, the use of an output function is intended to be implied. Additionally, you may wish to note the format of these annotations; "\`" can be used to mark a line as a comment.
 
 Numbers
-=======
+-------
 Everything in Lambda Calculus is a function, and so in order to represent numbers, we will need to design a functional interpretation of numbers themselves. The [standard](http://en.wikipedia.org/wiki/Church_numeral) interpretation is best made clear in the following, where `SUCC` is the successor function.
 
 ```language-lambda
@@ -60,7 +60,7 @@ ADD = λA->λB->A SUCC B
 We now wish to expand this idea of n-ary functions to other types, calling upon the idea of polymorphism.
 
 Polymorphism
-============
+------------
 Polymorphism is the quality of a function that works on multiple types. Our idea of polymorphism will we wrapping values as singletons to allow for a sort of generic type, a list type. For convenience, we will begin by defining shorthands for converting to and from singletons.
 
 ```language-lambda
@@ -96,7 +96,7 @@ Z CONS* 1 2 3 NAUGHT
 ```
 
 Lists
-=====
+-----
 With a solid foundation for lists, having built `PUSH` and `CONS*` functions, we will attempt to implement a couple functions very useful in dealing with lists, namely, `MAP` and `REDUCE`.
 
 ```language-lambda
@@ -118,7 +118,7 @@ LIST NUM (Z CONS* 1 2 3 NAUGHT)
 However, given that the `CONS*` function is polymorphic, we may wish to output mixed values, in which case the providing of a type rendering function, e.g., `NUM`, would not be possible. Thus we will now investigate explicit typing of values.
 
 Types
-=====
+-----
 For the explicit typing of values, the functions `*NUM`, `*BOOL`, `*CHAR`, and `*LIST` are included. Other than `*LIST`, which maps an explicitly typed list to its rendered values, the typing functions serve as a means of explicitly providing the type of a value. Additionally, `ID` either outputs an already rendered value, or can serve as the type of a list to be outputted, namely, one that contains already rendered values. For example:
 
 ```language-lambda
@@ -131,7 +131,7 @@ LIST ID (*LIST (CONS (* (PAIR *NUM 9)) (PAIR *BOOL TRUE) NIL))
 Note that explicitly typed lists contain type-value pairs, e.g., `PAIR *NUM 9`. Recall, also, that `*LIST` renders an explicitly typed list, and `ID` should then be paired with `LIST` to output these values. This system of typing may seem overly complex, but provides the power to render arbitrary structures when debugging, for example.
 
 Text
-====
+----
 Text strings are a very natural continuation of previously covered topics. A string is merely a list of numbers, and so we have already discussed a means of constructing them. Additionally, a special outputting function is provided for strings to exclude the punctuation of a generic list, namely, `STRING`.
 
 ```language-lambda
@@ -141,5 +141,5 @@ STRING GREET
 ```
 
 Conclusion
-==========
+----------
 We have implemented functions to simplify the handling of numbers, booleans, and lists. Additionally, we discussed polymorphism and typing in the Lambda Calculus, a very difficult but necessary topic to address. With these functions in your toolkit, either by your own inclusion of them or your use of [my interpreter](https://github.com/mattneary/Lambda-Calculus-Interpreter), the potential to develop full-fledged programs in the Lambda Calculus is hopefully a lot clearer.

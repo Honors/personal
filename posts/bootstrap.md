@@ -12,7 +12,7 @@ OR = λp->λq->p p q
 NOT = λp->λa->λb->p b a
 ```
 
-Now we begin with some elementary functions of S-Expressions.
+You will most likely want a means of interpreting this code, in which case you can download [my interpreter](https://github.com/mattneary/Lambda-Calculus-Interpreter). We now begin with some elementary functions of S-Expressions.
 
 ```language-lambda
 CONS = λx->λy->λf->f x y
