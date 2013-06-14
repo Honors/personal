@@ -1,5 +1,15 @@
 Workflows for the iPad
 ======================
+Explanations of the following use cases are provided.
+
+1. As a Photo-shoot Companion
+2. As a Card Processor
+3. As a News Medium
+4. As a Multi-touch Map
+5. As a Desk Utility
+6. As a Communication Portal
+
+
 As a Photo-shoot Companion
 --------------------------
 1. Take photos on camera.
@@ -22,8 +32,8 @@ As a News Medium
 - __Stock touch__ provides a visual summary of different economic sectors, allowing you to drill-down all the way to specific companies.
 - The internet is accessible in its entirety through __Safari__
 
-As a Zoomable Map
------------------
+As a Multi-touch Map
+--------------------
 ![Current Location](http://f.cl.ly/items/2h0v1X1Z2p1R280o072p/specs_location.jpg)
 
 1. Open either __Google Earth__ or __Maps__.
