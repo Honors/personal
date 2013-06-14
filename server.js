@@ -53,4 +53,4 @@ app.get({
 	}
 })
 
-exports.module = http.createServer(app);
+exports.module = http.createServer(app).listen(8080);
