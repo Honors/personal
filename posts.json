@@ -16,4 +16,7 @@
 }, {
 	"title": "Bootstrapping Lambda Calculus",
 	"link": "bootstrap.md"
+}, {
+	"title": "A Derivation of Cube-solving Methodology",
+	"link": "derivingrubik.md"
 }]
